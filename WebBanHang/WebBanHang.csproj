@@ -120,6 +120,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -172,11 +173,12 @@
     <Content Include="Views\Page\_HomeSlider.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Shared\_HeaderNavBar.cshtml" />
-    <Content Include="Views\Page\DangKy.cshtml" />
-    <Content Include="Views\Page\DangNhap.cshtml" />
+    <Content Include="Views\Account\DangKy.cshtml" />
+    <Content Include="Views\Account\DangNhap.cshtml" />
     <Content Include="Views\Page\GioiThieu.cshtml" />
     <Content Include="Views\Page\LienHe.cshtml" />
     <Content Include="Views\Page\SanPham.cshtml" />
+    <Content Include="Views\Account.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
