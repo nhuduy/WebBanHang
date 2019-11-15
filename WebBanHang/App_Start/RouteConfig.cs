@@ -13,20 +13,23 @@ namespace WebBanHang
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            // URL: /dang-nhap
             routes.MapRoute(
-                name: "page.dang_nhap",
-                url: "dang-nhap",
-                defaults: new { controller = "Page", action = "DangNhap" }
-            );
+              name: "Page.trang_chu",
+              url: "",
+              defaults: new { controller = "Page", action = "Index" }
+          );
 
-            // Route mặc định của trang Đăng ký
-            // URL: /dang-ky
             routes.MapRoute(
-                name: "page.dang_ky",
-                url: "dang-ky",
-                defaults: new { controller = "Page", action = "DangKy" }
-            );
+               name: "Page.gioi_thieu",
+               url: "gioi-thieu",
+               defaults: new { controller = "Page", action = "GioiThieu" }
+           );
+
+            routes.MapRoute(
+               name: "Page.lien_he",
+               url: "lien-he",
+               defaults: new { controller = "Page", action = "LienHe" }
+           );
 
             routes.MapRoute(
                 name: "page.san_pham",
@@ -50,6 +53,8 @@ namespace WebBanHang
                 defaults: new { controller = "Page", action = "Index" }
             );
 
+
+
             // Route mặc định của trang Đơn hàng
             // URL: /gio-hang
             routes.MapRoute(
@@ -57,6 +62,33 @@ namespace WebBanHang
                 url: "gio-hang",
                 defaults: new { controller = "Page", action = "GioHang" }
             );
+
+            // URL: /dang-nhap
+            routes.MapRoute(
+                name: "page.dang_nhap",
+                url: "dang-nhap",
+                defaults: new { controller = "Page", action = "DangNhap" }
+            );
+
+            // Route mặc định của trang Đăng ký
+            // URL: /dang-ky
+            routes.MapRoute(
+                name: "page.dang_ky",
+                url: "dang-ky",
+                defaults: new { controller = "Page", action = "DangKy" }
+            );
+
+            routes.MapRoute(
+            name: "Account.dang_nhap",
+            url: "dang-nhap",
+            defaults: new { controller = "Account", action = "DangNhap" }
+           );
+
+            routes.MapRoute(
+            name: "Account.dang_ky",
+            url: "dang-ky",
+            defaults: new { controller = "Account", action = "DangKy" }
+        );
 
             // Route mặc định của trang Check out
             // URL: /check-out

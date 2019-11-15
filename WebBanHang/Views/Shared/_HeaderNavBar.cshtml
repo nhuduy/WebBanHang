@@ -14,13 +14,13 @@
                     <a class="nav-link" href="/php/twig/backend/pages/dashboard">Quản trị</a>
                 </li>
                 <li class="nav-item">
-                   @Html.RouteLink("Sản phẩm", "page.SanPham", null, new { @class = "nav-link" })
+                   @Html.RouteLink("Sản phẩm", "Page.SanPham", null, new { @class = "nav-link" })
                 </li>
                 <li class="nav-item">
-                   @Html.RouteLink("Giới thiệu", "page.GioiThieu", null, new { @class = "nav-link" })
+                   @Html.RouteLink("Giới thiệu", "Page.GioiThieu", null, new { @class = "nav-link" })
                 </li>
                 <li class="nav-item">
-                    @Html.RouteLink("Liên hệ", "page.LienHe", null, new { @class = "nav-link" })
+                    @Html.RouteLink("Liên hệ", "Page.LienHe", null, new { @class = "nav-link" })
                 </li>
             </ul>
             <form class="form-inline mt-2 mt-md-0" method="get" action="/php/twig/frontend/pages/timkiem">
@@ -34,7 +34,7 @@
             </li>
             <li class="nav-item text-nowrap">
                 <!-- Nếu chưa đăng nhập thì hiển thị nút Đăng nhập -->
-                @Html.RouteLink("Đăng nhâp", "page.dang_nhap", null, new { @class = "nav-link" })
+                @Html.RouteLink("Đăng nhâp", "Page.dang_nhap", null, new { @class = "nav-link" })
             </li>
         </ul>
     </div>
