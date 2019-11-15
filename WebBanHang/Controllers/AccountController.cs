@@ -45,63 +45,63 @@ namespace WebBanHang.Controllers
             string country)
         {
                 try
-            {
-                string _FileName = "";
-                string datetimeFolderName = "";
-                //Di chuyen file vao thu muc mong muon
-                if(avatar.ContentLength > 0 )
                 {
-                     _FileName = Path.GetFileName(avatar.FileName);
-                    string _FileNameExtension = Path.GetExtension(avatar.FileName);
-                    if((_FileNameExtension == ".png"
-                        || _FileNameExtension == ".jpg"
-                        || _FileNameExtension == ".jpeg"
-                        || _FileNameExtension == ".docx"
-                        || _FileNameExtension == ".xls"
-                        || _FileNameExtension == ".xlsx") == false)
+                    string _FileName = "";
+                    string datetimeFolderName = "";
+                    //Di chuyen file vao thu muc mong muon
+                    if(avatar.ContentLength > 0 )
                     {
-                        return String.Format("File có đuôi {0} không hợp lệ. Vui lòng kiểm tra lại", _FileNameExtension);
-                    }
+                         _FileName = Path.GetFileName(avatar.FileName);
+                        string _FileNameExtension = Path.GetExtension(avatar.FileName);
+                        if((_FileNameExtension == ".png"
+                            || _FileNameExtension == ".jpg"
+                            || _FileNameExtension == ".jpeg"
+                            || _FileNameExtension == ".docx"
+                            || _FileNameExtension == ".xls"
+                            || _FileNameExtension == ".xlsx") == false)
+                        {
+                            return String.Format("File có đuôi {0} không hợp lệ. Vui lòng kiểm tra lại", _FileNameExtension);
+                        }
 
-                    DateTime now = DateTime.Now;
-                    datetimeFolderName = String.Format("{0}{1}{2}{3}{4}", now.Year, now.Month, now.Day, now.Hour, now.Minute); //201911122018
-                    string uploadedFolderPath = Server.MapPath("~/UploadedFiles"); //UploadedFiles/201911122018/ten file uploaed
+                        DateTime now = DateTime.Now;
+                        datetimeFolderName = String.Format("{0}{1}{2}{3}{4}", now.Year, now.Month, now.Day, now.Hour, now.Minute); //201911122018
+                        string uploadedFolderPath = Server.MapPath("~/UploadedFiles"); //UploadedFiles/201911122018/ten file uploaed
                     
-                    if (Directory.Exists(uploadedFolderPath) == false)// Nếu thư mục cần lưu trữ file upload không tồn tại ( chưa có ) => tạo mới
-                    {
-                        Directory.CreateDirectory(uploadedFolderPath);
+                        if (Directory.Exists(uploadedFolderPath) == false)// Nếu thư mục cần lưu trữ file upload không tồn tại ( chưa có ) => tạo mới
+                        {
+                            Directory.CreateDirectory(uploadedFolderPath);
+                        }
+
+                        string _path = Path.Combine(uploadedFolderPath, _FileName);
+                        avatar.SaveAs(_path);
                     }
 
-                    string _path = Path.Combine(uploadedFolderPath, _FileName);
-                    avatar.SaveAs(_path);
-                }
+                    using (QuanLyBanHangEntities context = new QuanLyBanHangEntities())
+                    {
+                        employee newRow = new employee();
+                        newRow.last_name = last_name;
+                        newRow.first_name = first_name;
+                        newRow.email = email;
+                        newRow.password = password;
+                        newRow.avatar = datetimeFolderName + "/" + _FileName;
+                        newRow.job_title = job_title;
+                        newRow.department = department;
+                        newRow.manager_id = manager_id;
+                        newRow.phone = phone;
+                        newRow.address1 = address1;
+                        newRow.address2 = address2;
+                        newRow.city = city;
+                        newRow.state = state;
+                        newRow.postal_code = postal_code;
+                        newRow.country = country;
+                        //Sinh câu lệnh để lưu =>> Insert INTO
+                        context.employees.Add(newRow);
+                        // Thực thi để lưu thực sự
+                        context.SaveChanges();
 
-                using (QuanLyBanHangEntities context = new QuanLyBanHangEntities())
-                {
-                    employee newRow = new employee();
-                    newRow.last_name = last_name;
-                    newRow.first_name = first_name;
-                    newRow.email = email;
-                    newRow.password = password;
-                    newRow.avatar = datetimeFolderName + "/" + _FileName;
-                    newRow.job_title = job_title;
-                    newRow.department = department;
-                    newRow.manager_id = manager_id;
-                    newRow.phone = phone;
-                    newRow.address1 = address1;
-                    newRow.address2 = address2;
-                    newRow.city = city;
-                    newRow.state = state;
-                    newRow.postal_code = postal_code;
-                    newRow.country = country;
-                    //Sinh câu lệnh để lưu =>> Insert INTO
-                    context.employees.Add(newRow);
-                    // Thực thi để lưu thực sự
-                    context.SaveChanges();
-
-                    return String.Format("Tài khoản {0} {1} đã được khởi tạo.", last_name, first_name);
+                        return String.Format("Tài khoản {0} {1} đã được khởi tạo.", last_name, first_name);
+                    }
                 }
-            }
 
             catch(Exception ex)
             {

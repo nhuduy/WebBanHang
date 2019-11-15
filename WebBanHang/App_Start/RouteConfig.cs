@@ -77,15 +77,15 @@ namespace WebBanHang
             );
 
             routes.MapRoute(
-            name: "Account.dang_nhap",
-            url: "dang-nhap",
-            defaults: new { controller = "Account", action = "DangNhap" }
+                name: "Account.dang_nhap",
+                url: "dang-nhap",
+                defaults: new { controller = "Account", action = "DangNhap" }
            );
 
             routes.MapRoute(
-            name: "Account.dang_ky",
-            url: "dang-ky",
-            defaults: new { controller = "Account", action = "DangKy" }
+                name: "Account.dang_ky",
+                url: "dang-ky",
+                defaults: new { controller = "Account", action = "DangKy" }
         );
 
             // Route mặc định của trang Check out
