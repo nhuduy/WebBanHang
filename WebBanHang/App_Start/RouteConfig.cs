@@ -32,7 +32,7 @@ namespace WebBanHang
            );
 
             routes.MapRoute(
-                name: "page.san_pham",
+                name: "Page.san_pham",
                 url: "san-pham",
                  defaults: new { controller = "Page", action = "SanPham" }
             );
@@ -40,7 +40,7 @@ namespace WebBanHang
             // Route mặc định của trang Chi tiết sản phẩm
             // URL: /product-detail
             routes.MapRoute(
-                name: "page.product_detail",
+                name: "Page.product_detail",
                 url: "chitiet-sanpham",
                 defaults: new { controller = "Page", action = "ProductDetail(int id)" }
             );
@@ -48,24 +48,22 @@ namespace WebBanHang
             // Route mặc định của trang Sản phẩm
             // URL: /tim-kiem
             routes.MapRoute(
-                name: "page.tim_kiem",
+                name: "Page.tim_kiem",
                 url: "tim-kiem",
                 defaults: new { controller = "Page", action = "Index" }
             );
 
-
-
             // Route mặc định của trang Đơn hàng
             // URL: /gio-hang
             routes.MapRoute(
-                name: "page.gio_hang",
+                name: "Page.gio_hang",
                 url: "gio-hang",
                 defaults: new { controller = "Page", action = "GioHang" }
             );
 
             // URL: /dang-nhap
             routes.MapRoute(
-                name: "page.dang_nhap",
+                name: "Page.dang_nhap",
                 url: "dang-nhap",
                 defaults: new { controller = "Page", action = "DangNhap" }
             );
@@ -73,7 +71,7 @@ namespace WebBanHang
             // Route mặc định của trang Đăng ký
             // URL: /dang-ky
             routes.MapRoute(
-                name: "page.dang_ky",
+                name: "Page.dang_ky",
                 url: "dang-ky",
                 defaults: new { controller = "Page", action = "DangKy" }
             );
@@ -93,21 +91,21 @@ namespace WebBanHang
             // Route mặc định của trang Check out
             // URL: /check-out
             routes.MapRoute(
-                name: "page.check_out",
+                name: "Page.check_out",
                 url: "check-out",
                 defaults: new { controller = "Page", action = "CheckOut" }
             );
 
             // URL: /chinh-sach
             routes.MapRoute(
-                name: "page.chinh_sach",
+                name: "Page.chinh_sach",
                 url: "chinh-sach",
                 defaults: new { controller = "Page", action = "ChinhSach" }
             );
 
             // URL: /dieu-khoan
             routes.MapRoute(
-                name: "page.dieu_khoan",
+                name: "Page.dieu_khoan",
                 url: "dieu-khoan",
                 defaults: new { controller = "Page", action = "DieuKhoan" }
             );

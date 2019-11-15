@@ -148,7 +148,6 @@ C:\Users\Andy\Source\Repos\nhuduy\WebBanHang\WebBanHang\obj\Debug\WebBanHang.csp
 C:\Users\Andy\Source\Repos\nhuduy\WebBanHang\WebBanHang\obj\Debug\WebBanHang.csproj.CopyComplete
 C:\Users\Andy\Source\Repos\nhuduy\WebBanHang\WebBanHang\obj\Debug\WebBanHang.dll
 C:\Users\Andy\Source\Repos\nhuduy\WebBanHang\WebBanHang\obj\Debug\WebBanHang.pdb
-D:\Repos\ASP.NET\WebBanHang\WebBanHang\obj\Debug\WebBanHang.csprojAssemblyReference.cache
 D:\Repos\ASP.NET\WebBanHang\WebBanHang\obj\Debug\WebBanHang.dll
 D:\Repos\ASP.NET\WebBanHang\WebBanHang\obj\Debug\WebBanHang.pdb
 D:\Repos\ASP.NET\WebBanHang\WebBanHang\bin\WebBanHang.dll.config
@@ -227,3 +226,4 @@ D:\Repos\ASP.NET\WebBanHang\WebBanHang\bin\Newtonsoft.Json.xml
 D:\Repos\ASP.NET\WebBanHang\WebBanHang\bin\Antlr3.Runtime.pdb
 D:\Repos\ASP.NET\WebBanHang\WebBanHang\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 D:\Repos\ASP.NET\WebBanHang\WebBanHang\obj\Debug\WebBanHang.csproj.CopyComplete
+D:\Repos\ASP.NET\WebBanHang\WebBanHang\obj\Debug\WebBanHang.csprojAssemblyReference.cache

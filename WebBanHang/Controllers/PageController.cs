@@ -14,16 +14,29 @@ namespace WebBanHang.Controllers
             return View();
         }
 
-        public ActionResult DieuKhoan()
+        public ActionResult SanPham()
         {
-            ViewBag.Message = "Đây là trang điều khoản...";
 
             return View();
         }
 
-        public ActionResult SanPham()
+        public ActionResult GioiThieu()
         {
-            ViewBag.Message = "Đây là trang sản phẩm...";
+            return View();
+        }
+
+        public ActionResult LienHe()
+        {
+            return View();
+        }
+
+        public ActionResult ChinhSach()
+        {
+
+            return View();
+        }
+        public ActionResult DieuKhoan()
+        {
 
             return View();
         }

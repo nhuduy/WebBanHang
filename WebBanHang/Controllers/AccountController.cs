@@ -16,9 +16,6 @@ namespace WebBanHang.Controllers
             // Search in database ( username and password )
             using (QuanLyBanHangEntities context = new QuanLyBanHangEntities())
             {
-
-
-
                 // Viết theo style method
                 var objEmployeeLogin = context.employees.Where(p => p.email == email && p.password == password).FirstOrDefault();
 
