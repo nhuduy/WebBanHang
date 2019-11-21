@@ -132,6 +132,7 @@
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PageController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="EF\config.cs">
       <DependentUpon>QuanLyBanHangEF.tt</DependentUpon>
     </Compile>
@@ -192,6 +193,7 @@
     <Content Include="Content\Images\slider-1.jpg" />
     <Content Include="Content\Images\slider-2.jpg" />
     <Content Include="Content\Images\slider-3.jpg" />
+    <Content Include="Content\ProductDetail.css" />
     <Content Include="Content\Site.css" />
     <Content Include="DocumentFiles\BangBaoGia.txt" />
     <Content Include="DocumentFiles\Bảng báo giá.txt" />
@@ -265,6 +267,7 @@
     <Content Include="Views\Page\DangNhap.cshtml" />
     <Content Include="Views\Account\DangKy.cshtml" />
     <Content Include="Views\Account\DangNhap.cshtml" />
+    <Content Include="Views\Product\ProductDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

@@ -110,6 +110,13 @@ namespace WebBanHang
                 defaults: new { controller = "Page", action = "DieuKhoan" }
             );
 
+            // URL: /sanpham-chitiet
+            routes.MapRoute(
+                name: "Product.sanpham_chitiet",
+                url: "sanpham-chitiet",
+                defaults: new { controller = "Product", action = "ProductDetail" }
+            );
+
             // Route mặc định của trang Web
             // URL: /
             routes.MapRoute(
