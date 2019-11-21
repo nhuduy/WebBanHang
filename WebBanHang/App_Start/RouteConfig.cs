@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using WebBanHang.EF;
 
 namespace WebBanHang
 {
@@ -115,6 +116,23 @@ namespace WebBanHang
                 name: "Product.sanpham_chitiet",
                 url: "sanpham-chitiet",
                 defaults: new { controller = "Product", action = "ProductDetail" }
+            );
+
+            // Route dành cho Backend
+            // Route Dashboard
+            routes.MapRoute(
+                name: "admin.page.dashboard",
+                url: "admin/dashboard",
+                defaults: new { controller = "Dashboard", action = "Index" },
+                namespaces: new string[] { "WebBanHang.Controllers.Backend" }
+            );
+
+            // Route sản phẩm
+            routes.MapRoute(
+                name: "admin.products.index",
+                url: "admin/products",
+                defaults: new { controller = "Products", action = "Index" },
+                namespaces: new string[] { "WebBanHang.Controllers.Backend" }
             );
 
             // Route mặc định của trang Web
