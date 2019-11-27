@@ -60,7 +60,7 @@ namespace WebBanHang.Controllers.Backend
                 string _FileName = "";
                 string datetimeFolderName = "";
                 //Di chuyen file vao thu muc mong muon
-                if (image.ContentLength > 0)
+                if (image != null && image.ContentLength > 0)
                 {
                     _FileName = Path.GetFileName(image.FileName);
                     string _FileNameExtension = Path.GetExtension(image.FileName);
@@ -99,12 +99,13 @@ namespace WebBanHang.Controllers.Backend
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            product products = db.products.Find(id);
+            product products = db.products.Find(id);    //SELECT * FROM product WHERE id = 601
             if (products == null)
             {
                 return HttpNotFound();
             }
-            return View(products);
+            ViewBag.Products = products;
+            return View("~/Views/Backend/Products/Edit.cshtml", products);
         }
 
         // POST: Products/Edit/5
@@ -112,10 +113,66 @@ namespace WebBanHang.Controllers.Backend
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,product_code,product_name,description,standard_cost,list_price,target_level,reorder_level,minimum_reorder_quantity,quantity_per_unit,discontinued,category,image")] product product)
+        public ActionResult Edit([Bind(Include = 
+                "id,product_code,product_name,description,standard_cost,list_price,target_level,reorder_level,minimum_reorder_quantity," +
+                    "quantity_per_unit,discontinued,category,image")] product product, string image_oldFile, HttpPostedFileBase image)
+        // HttpPostedFileBase tạo thêm image
         {
             if (ModelState.IsValid)
             {
+                string uploadFolderPath = Server.MapPath("~/UploadedFiles");
+                if (image == null) // Nếu không cập nhật file - ko chọn file
+                {
+                    // Giữ nguyên giá trị tên file trong cột `image`
+                    product.image = image_oldFile;
+                }
+
+                else // Người dùng chọn ảnh mới
+                {
+                    // 1. Xoá ảnh file cũ (tránh rác)
+                    string filePathAnhCu = Path.Combine(uploadFolderPath, product.image);
+
+                    if (System.IO.File.Exists(filePathAnhCu))
+                    {
+                        System.IO.File.Delete(filePathAnhCu);
+                    }
+
+                    // 2. Upload file arnh mowis
+                    // Xử lý file: lưu file vào thư mục Uploađèiles/ProductImages
+                    string _FileNameExtension = Path.GetFileName(image.FileName);
+                    // Di chuyển file tới thư mục mong muốn
+                    string _FileName = "";
+
+                    if (image.ContentLength > 0)
+                    {
+                        _FileName = Path.GetFileName(image.FileName);
+                        if ((_FileNameExtension == ".png"
+                            || _FileNameExtension == ".jpg"
+                            || _FileNameExtension == ".jpeg") == false)
+                        {
+                            return View(String.Format("File có đuôi {0} không hợp lệ. Vui lòng kiểm tra lại", _FileNameExtension));
+                        }
+
+                        
+
+                        if (Directory.Exists(uploadFolderPath) == false)// Nếu thư mục cần lưu trữ file upload không tồn tại ( chưa có ) => tạo mới
+                        {
+                            Directory.CreateDirectory(uploadFolderPath);
+                        }
+
+                        string _path = Path.Combine(uploadFolderPath, _FileName);
+                        image.SaveAs(_path);
+                    }
+
+                    // Lưu tên file vào database
+                    product.image = _FileName;
+                }
+                /*
+                 UPDATE products
+                 SET product_code = 'P3',
+                        product_name = 'DELL 333'
+                WHERE id = 603
+                 */
                 db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
