@@ -22,24 +22,29 @@
                 @Html.Partial("~/Views/Backend/Shared/_Sidebar.cshtml")
                 <!-- Sidebar -->
             </div>
-            
+
             <div class="col-md-10">
                 <main role="main" class="d-flex flex-column h-100">
                     @RenderBody()
+
                 </main>
             </div>
 
         </div>
-        
+
     </div>
 
     <!-- Footer -->
     @Html.Partial("~/Views/Shared/_Footer.cshtml")
     <!-- End Footer -->
 
+    <script src="~/Scripts/sweetalert2.all.min.js"></script>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+
+
 </body>
 </html>

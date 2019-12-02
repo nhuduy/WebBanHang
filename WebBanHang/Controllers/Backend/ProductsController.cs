@@ -37,10 +37,10 @@ namespace WebBanHang.Controllers.Backend
         }
 
         // GET: Products/Create
-         public ActionResult Create()
-         {
+        public ActionResult Create()
+        {
             return View("~/Views/Backend/Products/Create.cshtml");
-         }
+        }
 
         // POST: Products/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
@@ -48,11 +48,11 @@ namespace WebBanHang.Controllers.Backend
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(
-            [Bind(Include = 
+            [Bind(Include =
                 "id,product_code,product_name,description,standard_cost,list_price,target_level," +
-                    "reorder_level,minimum_reorder_quantity,quantity_per_unit,discontinued,category,image")] 
+                    "reorder_level,minimum_reorder_quantity,quantity_per_unit,discontinued,category,image")]
                 product product,
-            HttpPostedFileBase image )
+            HttpPostedFileBase image)
         {
             if (ModelState.IsValid)
             {
@@ -113,7 +113,7 @@ namespace WebBanHang.Controllers.Backend
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = 
+        public ActionResult Edit([Bind(Include =
                 "id,product_code,product_name,description,standard_cost,list_price,target_level,reorder_level,minimum_reorder_quantity," +
                     "quantity_per_unit,discontinued,category,image")] product product, string image_oldFile, HttpPostedFileBase image)
         // HttpPostedFileBase tạo thêm image
@@ -137,12 +137,12 @@ namespace WebBanHang.Controllers.Backend
                         System.IO.File.Delete(filePathAnhCu);
                     }
 
-                    // 2. Upload file arnh mowis
+                    // 2. Upload file ảnh mới
                     // Xử lý file: lưu file vào thư mục Uploađèiles/ProductImages
                     string _FileNameExtension = Path.GetFileName(image.FileName);
                     // Di chuyển file tới thư mục mong muốn
                     string _FileName = "";
-
+                    // Di chuyển file vào thư mục mong muốn
                     if (image.ContentLength > 0)
                     {
                         _FileName = Path.GetFileName(image.FileName);
@@ -153,8 +153,6 @@ namespace WebBanHang.Controllers.Backend
                             return View(String.Format("File có đuôi {0} không hợp lệ. Vui lòng kiểm tra lại", _FileNameExtension));
                         }
 
-                        
-
                         if (Directory.Exists(uploadFolderPath) == false)// Nếu thư mục cần lưu trữ file upload không tồn tại ( chưa có ) => tạo mới
                         {
                             Directory.CreateDirectory(uploadFolderPath);
@@ -163,7 +161,6 @@ namespace WebBanHang.Controllers.Backend
                         string _path = Path.Combine(uploadFolderPath, _FileName);
                         image.SaveAs(_path);
                     }
-
                     // Lưu tên file vào database
                     product.image = _FileName;
                 }
@@ -192,7 +189,7 @@ namespace WebBanHang.Controllers.Backend
             {
                 return HttpNotFound();
             }
-            return View(product);
+            return View("~/Views/Backend/Products/Delete.cshtml", product);
         }
 
         // POST: Products/Delete/5

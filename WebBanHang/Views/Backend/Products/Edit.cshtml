@@ -7,90 +7,136 @@
 
 <h2>Edit</h2>
 
-@using (Html.BeginForm())
+
+@using (Html.BeginForm("Edit", "Products", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
-<div class="form-horizontal">
-    <h4>product</h4>
-    <hr />
+    <div class="form-horizontal">
+        <h4>products</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.id)
 
-    <div class="form-group">
-        <label for="product_code">Mã sản phẩm</label>
-        <input type="text" id="product_code" name="product_code" class="form-control" value="@ViewBag.Product.product_code" />
-    </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="product_code">product_code</label>
+            <div class="col-md-10">
+                <input type="text" name="product_code" id="product_code" value="@ViewBag.Product.product_code" class="form-control" />
+            </div>
+        </div>
 
+        <div class="form-group">
+            @Html.LabelFor(model => model.product_code, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.product_code, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.product_code, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-    <div class="form-group">
-        <label for="product_name">Tên sản phẩm</label>
-        <input type="text" id="product_name" name="product_name" class="form-control" value="@ViewBag.Product.product_name" />
-    </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.product_name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.product_name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.product_name, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-    <div class="form-group">
-        <label for="description">Mô tả</label>
-        <input type="text" id="description" name="description" class="form-control" value="@ViewBag.Product.description" />
-    </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-    <div class="form-group">
-        <label for="standard_cost">Giá cơ bản</label>
-        <input type="text" id="standard_cost" name="standard_cost" class="form-control" value="@ViewBag.Product.standard_cost" />
-    </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.standard_cost, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.standard_cost, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.standard_cost, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
+        <div class="form-group">
+            @Html.LabelFor(model => model.list_price, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.list_price, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.list_price, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-    <div class="form-group">
-        <label for="target_level">target_level</label>
-        <input type="text" id="target_level" name="target_level" class="form-control" value="@ViewBag.Product.target_level" />
-    </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.target_level, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.target_level, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.target_level, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-    <div class="form-group">
-        <label for="reorder_level">reorder_level</label>
-        <input type="text" id="reorder_level" name="reorder_level" class="form-control" value="@ViewBag.Product.reorder_level" />
-    </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.reorder_level, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.reorder_level, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.reorder_level, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-    <div class="form-group">
-        <label for="minimum_reorder_quantity">minimum_reorder_quantity</label>
-        <input type="text" id="minimum_reorder_quantity" name="minimum_reorder_quantity" class="form-control" value="@ViewBag.Product.minimum_reorder_quantity" />
-    </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.minimum_reorder_quantity, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.minimum_reorder_quantity, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.minimum_reorder_quantity, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-    <div class="form-group">
-        <label for="quantity_per_unit">quantity_per_unit</label>
-        <input type="text" id="quantity_per_unit" name="quantity_per_unit" class="form-control" value="@ViewBag.Product.quantity_per_unit" />
-    </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.quantity_per_unit, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.quantity_per_unit, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.quantity_per_unit, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-    <div class="form-group">
-        <label for="discontinued">discontinued</label>
-        <input type="text" id="discontinued" name="discontinued" class="form-control" value="@ViewBag.Product.discontinued" />
-    </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.discontinued, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.discontinued, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.discontinued, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-    <div class="form-group">
-        <label for="list_price">Danh mục</label>
-        <input type="text" id="category" name="category" class="form-control" value="@ViewBag.Product.category" />
-    </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.category, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.category, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.category, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-    <div class="form-group">
-        <label for="image">Hình đại diện sản phẩm</label>
-        @if (String.IsNullOrEmpty(ViewBag.Products.image))
-        {
-            <img class="bd-placeholder-img card-img-top img-thumbnail" width="150px%" height="150px" src="~/Content/Images/no-photo.png" />
-        }
+        <div class="form-group">
+            <label class="control-label col-md-2" for="image">Hình đại diện sản phẩm</label>
+            <div class="col-md-10">
+                @if (String.IsNullOrEmpty(ViewBag.Product.image))
+                {
+                    <img class="bd-placeholder-img card-img-top img-thumbnail" style="width: 100px; height: 100px;" src="~/Content/img/no-photo.png">
+                }
+                else
+                {
+                    <img class="bd-placeholder-img card-img-top img-thumbnail" style="width: 100px; height: 100px;" src="~/UploadedFiles/ProductImages/@ViewBag.Product.image">
+                }
 
-        else
-        {
-            <img class="bd-placeholder-img card-img-top img-thumbnail" width="150px%" height="150px" src="~/UploadedFiles/ProductImages/
-            @ViewBag.Products.image" />
-        }
-        <input type="hidden" name="image_oldFile" value="@ViewBag.Products.image" />
-        <input type="file" id="image" name="image" />
+                <input type="hidden" name="image_oldFile" value="@ViewBag.Product.image" />
+                <input type="file" name="image" id="image" />
+                @Html.ValidationMessageFor(model => model.image, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-    </div>
-
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input class="btn btn-primary" type="submit" value="save" />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
         </div>
     </div>
-</div>
 }
 
 <div>
