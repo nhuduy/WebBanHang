@@ -38,7 +38,7 @@ namespace WebBanHang
                  defaults: new { controller = "Page", action = "SanPham" }
             );
 
-            // Route mặc định của trang Chi tiết sản phẩm
+            // Route mặc định của trang Chi tiết Sản phẩm
             // URL: /product-detail
             routes.MapRoute(
                 name: "Page.product_detail",
@@ -127,7 +127,7 @@ namespace WebBanHang
                 namespaces: new string[] { "WebBanHang.Controllers.Backend" }
             );
 
-            // Route sản phẩm
+            // Route Sản phẩm
             routes.MapRoute(
                 name: "admin.products.index",
                 url: "admin/products",
@@ -135,7 +135,7 @@ namespace WebBanHang
                 namespaces: new string[] { "WebBanHang.Controllers.Backend" }
             );
 
-            // Route sản phẩm
+            // Route Sản phẩm
             // Route Thêm mới Sản phẩm
             // URL: /admin/products/create
             routes.MapRoute(
@@ -154,7 +154,7 @@ namespace WebBanHang
                 namespaces: new string[] { "WebBanHang.Controllers.Backend" }
             );
 
-            // Route Xóa sản phẩm
+            // Route Xóa Sản phẩm
             routes.MapRoute(
                 name: "admin.products.delete",
                 url: "admin/products/delete/{id}",
@@ -180,6 +180,30 @@ namespace WebBanHang
                 url: "api/customers/",
                 defaults: new { controller = "Api", action = "GetCustomers" },
                 namespaces: new string[] { "WebBanHang.Controllers.Backend" }
+            );
+
+            // route api Xóa Sản phẩm
+            // URL: /api/products/{id}/delete
+            routes.MapRoute(
+                name: "api.products.delete",
+                url: "api/products/{id}/delete",
+                defaults: new { controller = "Api", action = "Delete", id = UrlParameter.Optional }
+            );
+
+            // route api Thêm Sản phẩm
+            // URL: /api/products/create
+            routes.MapRoute(
+                name: "api.products.create",
+                url: "api/products/create",
+                defaults: new { controller = "Api", action = "Create" }
+            );
+
+            // route api Sửa Sản phẩm
+            // URL: /api/products/{id}/edit
+            routes.MapRoute(
+                name: "api.products.edit",
+                url: "api/products/{id}/edit",
+                defaults: new { controller = "Api", action = "Edit", id = UrlParameter.Optional }
             );
 
             // Route mặc định của trang Web
